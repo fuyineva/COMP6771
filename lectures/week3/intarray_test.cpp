@@ -6,7 +6,10 @@
 SCENARIO() {
   GIVEN("A simple IntArray") {
     IntArray array{2};
+//    const IntArray& a{2};
+//    IntArray c{a};
 
+//    IntArray array2;
     THEN("The size should be correct") {
       REQUIRE(array.size() == 2);
     }
@@ -29,14 +32,14 @@ SCENARIO() {
     IntArray array{2};
     array.At(1) = 1;
 
-//    WHEN("You attempt to make a const reference to the array") {
-//      const auto& cref{array};
-//
-//      THEN("You can successfully index using the const reference") {
-//        REQUIRE(cref.At(0) == 0);
-//        REQUIRE(cref.At(1) == 1);
-//      }
-//    }
+    WHEN("You attempt to make a const reference to the array") {
+      const auto& cref{array};
+
+      THEN("You can successfully index using the const reference") {
+        REQUIRE(cref.At(0) == 0);
+        REQUIRE(cref.At(1) == 1);
+      }
+    }
 
     WHEN("You copy-construct the array") {
       auto copy{array};
@@ -79,13 +82,16 @@ SCENARIO() {
     }
 
     WHEN("You move the array") {
+      std::cout<<"copy1"<<std::endl;
       auto from{array};
+      std::cout<<"copy2"<<std::endl;
       auto moved{std::move(from)};
 
       THEN("The new array has the same data") {
         REQUIRE(moved.size() == 2);
         REQUIRE(moved.At(0) == 0);
         REQUIRE(moved.At(1) == 1);
+
       }
 
       AND_THEN("The original has no data") {

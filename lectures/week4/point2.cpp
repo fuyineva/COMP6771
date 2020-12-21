@@ -4,6 +4,7 @@
 class Point {
   public:
     Point(int x, int y) : x_{x}, y_{y} {};
+
     friend Point operator+(const Point& lhs, const Point& rhs);
     friend std::ostream& operator<<(std::ostream& os,
                                     const Point& p);

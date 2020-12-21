@@ -7,6 +7,7 @@ std::string GetValidWords(const std::vector<std::string>& words, const std::stri
   std::istringstream is{value};
   std::ostringstream out;
   PrintValidWords(words, is, out);
+
   return out.str();
 }
 

@@ -6,14 +6,17 @@
 // A std::vector style type that can't be resized.
 class IntArray {
  public:
+
   explicit IntArray(int size);
-  IntArray(const IntArray&) = default;
-  IntArray& operator=(const IntArray&) = default;
-  IntArray(IntArray&&) = default;
-  IntArray& operator=(IntArray&&) = default;
+  explicit IntArray()= default;
+  IntArray(const IntArray&);
+  IntArray& operator=(const IntArray&);
+  IntArray(IntArray&&) noexcept ;
+  IntArray& operator=(IntArray&&) noexcept ;
   ~IntArray() noexcept;
 
   int& At(int i);
+  const int& At(int i) const ;
   int size() const;
 
  private:

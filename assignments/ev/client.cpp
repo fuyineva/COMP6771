@@ -62,7 +62,7 @@ int main() {
   // type cast from EuclideanVector to a std::vector
   auto lj = std::vector<double>{j};
 
-  for (auto d : lj) {
-    std::cout << d << '\n';
+  for (auto item : lj) {
+    std::cout << item << '\n';
   }
 }
